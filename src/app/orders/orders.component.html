@@ -1,0 +1,51 @@
+<h4 class="card-header">Order Summary</h4>
+<div class="card">
+  <div class="row" *ngIf="order">
+    <div class="col-4">
+      <div class="container">
+        <h5 class="col-12" style="padding-top: 10px">Tests:</h5>
+        <p *ngFor="let testSlot of order.testSlots">
+          <b>{{ testSlot.test.name }}</b> - {{ testSlot.time | date: "medium" }}
+        </p>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="container">
+        <h5 class="col-12" style="padding-top: 10px">Patient:</h5>
+        <p><b>Name:</b> {{ order.patient.name }}</p>
+        <p><b>Email:</b> {{ order.patient.email }}</p>
+        <p><b>Mobile:</b> {{ order.patient.mobileNumber }}</p>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="container">
+        <h5 class="col-12" style="padding-top: 10px">Payment:</h5>
+        <p><b>Card Owner:</b> {{ order.payment.cardOwner }}</p>
+        <p><b>Card Number:</b> {{ order.payment.cardNumber }}</p>
+        <p><b>Expiry:</b> {{ order.payment.expiry }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row col-12">
+  <div class="col-3"></div>
+  <div class="card col-6" >
+    <h4 class="col-12" style="padding-top: 10px; text-align:center;">Invoice</h4>
+    <div class="row" *ngIf="order">
+      <div class="row col-12" style="padding-top: 10px">
+          <div class="col-5" style="text-align:right;">
+            <p *ngFor="let testSlot of order.testSlots">
+              <b>{{ testSlot.test.name }}</b>
+            </p>
+            <b>Total</b>
+          </div>
+          <div class="col-7" style="text-align:left;padding-left:175px;">
+            <p *ngFor="let testSlot of order.testSlots">{{ testSlot.test.price }}$</p>
+            {{ order.totalAmount }}$
+          </div>
+      </div>
+      <br/><b class="completed" style="text-align:center;padding-bottom: 20px">*inclusive of 10% tax</b>
+    </div>
+  </div>
+  <div class="col-3"></div>
+</div>

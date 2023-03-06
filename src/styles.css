@@ -1,0 +1,16 @@
+/* You can add global styles to this file, and also import other style files */
+
+.btn-primary{
+    background-color: #3BD278 !important;
+    border-color: #3BD278 !important;
+}
+
+.btn-link{
+    color:#3BD278 !important;
+    text-decoration: none !important;
+}
+
+.btn-link-outline{
+    color:#3BD278 !important;
+    border: 1px solid #3BD278 !important;
+}

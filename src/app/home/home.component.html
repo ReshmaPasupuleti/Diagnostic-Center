@@ -1,0 +1,37 @@
+<div
+  class="row"
+  style="margin-top: 10%; margin-bottom: 10%"
+  *ngIf="type == 'employee'"
+>
+  <div class="card offset-1 col-4" routerLink="/tests">
+    <div class="container">
+      <h4><b>Manage Tests</b></h4>
+      <p>View, Add & Delete Tests.</p>
+    </div>
+  </div>
+  <div class="card offset-2 col-4" routerLink="/scheduled-tests">
+    <div class="container">
+      <h4><b>Tests Scheduled</b></h4>
+      <p>View Tests Scheduled & Send Reports</p>
+    </div>
+  </div>
+</div>
+
+<div
+  class="row"
+  style="margin-top: 10%; margin-bottom: 10%"
+  *ngIf="type == 'patient'"
+>
+  <div class="card offset-1 col-4" routerLink="/tests">
+    <div class="container">
+      <h4><b>Schedule Tests</b></h4>
+      <p>Schedule a specific timeslots for Tests</p>
+    </div>
+  </div>
+  <div class="card offset-2 col-4" routerLink="/scheduled-tests">
+    <div class="container">
+      <h4><b>Tests Scheduled</b></h4>
+      <p>View Tests & Reports</p>
+    </div>
+  </div>
+</div>

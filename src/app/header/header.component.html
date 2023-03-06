@@ -1,0 +1,34 @@
+<div class="headerContainer">
+  <div class="appHeader col-7">
+    <div class="title" routerLink="/home" routerLinkActive="active">
+      {{ title }}
+    </div>
+  </div>
+  <div class="col-5">
+    <div (click)="logout()" class="login" *ngIf="isLoggedin">Logout</div>
+    <div class="user" *ngIf="isLoggedin">
+      <img
+        alt="Image placeholder"
+        class="image"
+        src="../../assets/img/user-male.png"
+      />
+      {{ user.name }}
+    </div>
+    <div
+      routerLink="/tests"
+      routerLinkActive="active"
+      class="login"
+      *ngIf="isLoggedin && type == 'patient'"
+    >
+      Cart ({{ cartCount }})
+    </div>
+    <div
+      routerLink="/orders"
+      routerLinkActive="active"
+      class="login"
+      *ngIf="isLoggedin && type == 'patient'"
+    >
+      My Orders
+    </div>
+  </div>
+</div>

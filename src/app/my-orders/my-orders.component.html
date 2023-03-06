@@ -1,0 +1,53 @@
+<div style="margin-top: 2%; margin-bottom: 10%">
+  <h4 class="card-header">My Orders</h4>
+  <div class="row">
+    <div class="col-4" *ngFor="let order of orders">
+      <div class="card" [routerLink]="['/orders', order._id]">
+        <div class="container">
+          <div class="orderId"><b>Order Id: </b>{{ order._id }}</div>
+          <div class="col-12">
+            <div class="subHead">Tests:</div>
+            <div *ngFor="let testSlot of order.testSlots; let i = index">
+              <div class="row col-12" style="margin-top: 10px">
+                <div class="col-9 testName">
+                  <p style="float: left">{{ testSlot.test.name }} <br/> {{ testSlot.time | date: "medium" }}</p>
+                </div>
+                <div class="col-3">
+                  <p style="float: right" [ngClass]="testSlot.status">
+                    {{ testSlot.status }}
+                  </p>
+                </div>
+              </div>
+              <div class="row col-12">
+                <div class="col-9">{{ testSlot.test.price }}$</div>
+                <div class="col-3">
+                  <div
+                    *ngIf="testSlot.reportSent"
+                    style="float: right"
+                    class="completed"
+                  >
+                    *Reports Sent
+                  </div>
+                </div>
+              </div>
+              <hr />
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="subHead">Patient:</div>
+            <div class="row col-12" style="margin-top: 10px">
+              <div class="col-9 testName">
+                <p style="float: left">Name</p>
+              </div>
+              <div class="col-3">
+                <p style="float: right">
+                  {{ order.patient.name }}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

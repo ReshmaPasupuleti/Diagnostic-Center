@@ -1,0 +1,87 @@
+<div style="margin-top: 5%; margin-bottom: 10%">
+  <div class="row">
+    <div class="col-8">
+      <h4>Tests</h4>
+    </div>
+    <div class="col-4">
+      <button
+        *ngIf="type == 'employee'"
+        style="float: right; margin-right: 10px"
+        class="btn btn-link-outline"
+        routerLink="/add-test"
+        routerLinkActive="active"
+      >
+        Add New Test
+      </button>
+      <button
+        *ngIf="type == 'patient'"
+        style="float: right; margin-right: 10px"
+        class="btn btn-link-outline"
+        (click)="continue()"
+        routerLinkActive="active"
+      >
+        Continue
+      </button>
+      <button
+        style="float: right; margin-right: 10px"
+        class="btn btn-link"
+        routerLink="/home"
+        routerLinkActive="active"
+      >
+        Back
+      </button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-4" *ngFor="let test of tests; let i = index">
+      <div class="card">
+        <div class="container">
+          <h5>
+            <b>{{ test.name }}</b>
+          </h5>
+          <p>{{ test.description }}</p>
+          <div class="row col-12">
+            <div class="price_block" style="float: right">
+              <div class="price" style="float: right">{{ test.price }}$</div>
+            </div>
+          </div>
+          <input
+            type="datetime-local"
+            [(ngModel)]="dates[i]"
+            class="form-control"
+            id="dob"
+            max="this.date"
+            *ngIf="type == 'patient'"
+          />
+          <div class="col-12 buttonContainer" *ngIf="type == 'employee'">
+            <button
+              class="btn btn-primary"
+              style="float: right"
+              (click)="delete(test._id)"
+            >
+              Delete
+            </button>
+          </div>
+          <div class="col-12 buttonContainer" *ngIf="type == 'patient'">
+            <button
+              class="btn btn-primary"
+              (click)="addToCart(test, dates[i])"
+              style="float: right"
+              *ngIf="!inCart(test._id)"
+            >
+              Add to Cart
+            </button>
+            <button
+              class="btn btn-danger"
+              (click)="removeFromCart(test._id)"
+              *ngIf="inCart(test._id)"
+              style="float: right"
+            >
+              Remove from Cart
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
